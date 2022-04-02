@@ -1,0 +1,19 @@
+The major obstacles to the future of the S.T.A.L.K.E.R. engine were its inherent inability to be multi-threaded, the weak and error-prone networking model, and simply awful resource and memory management, which prohibited any kind of streaming or simply keeping the working set small enough for "next-gen" consoles.
+
+When 4A started as an independent studio this work became a foundation of the future engine. Because of the tight timescale we've opted to use a lot of middleware to get things going quickly. We've selected PhysX for physics, PathEngine for AI navigation, LUA as a primary development file format, not a scripting engine, for easy SVN merging, RakNet for physical network layer, FaceFX for facial animation, OGG Vorbis for sound format, and many other small things like compression libraries, etc.
+
+Where do you start when it comes to making a cross-format console/PC engine?
+
+Oles Shishkovstov: The primary focuses are the multi-threading model, memory and resource management and, finally, networking.
+
+The most interesting/non traditional thing about our implementation of multi-threading is that we don't have dedicated threads for processing some specific tasks in-game with the exception of PhysX thread.
+
+All our threads are basic workers. We use task-model but without any pre-conditioning or pre/post-synchronising. Basically all tasks can execute in parallel without any locks from the point when they are spawned. There are no inter-dependencies for tasks. It looks like a tree of tasks, which start from more heavyweight ones at the beginning of the frame to make the system self-balanced.
+
+There are some sync-points between sub-systems. For example, between PhysX and the game, or between the game and renderer. But they can be crossed over by other tasks, so no thread is idle. The last time I measured the statistics, we were running approximately 3,000 tasks per 30ms frame on Xbox 360 for CPU-intensive scenes with all HW threads at 100 per cent load.
+
+The PS3 is not that different by the way. We use "fibres" to "emulate" a six-thread CPU, and then each task can spawn a SPURS (SPU) job and switch to another fibre. This is a kind of PPU off-loading, which is transparent to the system. The end result of this beautiful, albeit somewhat restricting, model is that we have perfectly linear scaling up to the hardware deficiency limits.
+
+As for memory and resource management, we don't use plain old C++ pointers in most of the code, we use reference-counted strong and weak pointers. With a bit of atomic operations and memory barriers here and there they become a very robust basic tool for multi-threaded programming.
+
+Then comes memory management. You know, it's always custom-made - lots of different pools (to either limit the subsystems or reduce lock-contention), lots of different allocation strategies for different kinds of data, that's boring. The major memory consumers are paid the most attention though. Geometric data is garbage-collected with relocation, for example, but the more important things are the raw stats.
