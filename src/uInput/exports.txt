@@ -1,0 +1,2 @@
+struct uinput::manager * uinput::create(struct uinput::configuration *)
+void uinput::destroy(void)

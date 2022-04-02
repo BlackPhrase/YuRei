@@ -1,0 +1,1 @@
+class std::_Init_locks & std::_Init_locks::operator=(class std::_Init_locks const &)

@@ -1,0 +1,28 @@
+uspatial::entity::entity(class uspatial::entity const &)
+uspatial::entity::entity(class uspatial::dbase *)
+uspatial::node::node(class uspatial::node const &)
+uspatial::node::node(void)
+uspatial::entity::~entity(void)
+uspatial::node::~node(void)
+class uspatial::entity & uspatial::entity::operator=(class uspatial::entity const &)
+class uspatial::node & uspatial::node::operator=(class uspatial::node const &)
+const uspatial::entity::`vftable'
+bool uspatial::node::_empty(void)
+void uspatial::node::_init(class uspatial::node *)
+void uspatial::node::_insert(class uspatial::entity *)
+void uspatial::node::_remove(class uspatial::entity *)
+bool uspatial::entity::spatial_inside(void)
+void uspatial::entity::spatial_move(void)
+void uspatial::entity::spatial_register(void)
+struct _vec3<float> uspatial::entity::spatial_sector_point(void)
+void uspatial::entity::spatial_unregister(void)
+collector_create
+collector_destroy
+collector_p_create
+collector_p_destroy
+collider_create
+collider_destroy
+database_create
+database_destroy
+trimodel_create
+trimodel_destroy

@@ -1,0 +1,3 @@
+void upapi::create(void)
+void upapi::destroy(void)
+class upapi::manager * upapi::particle_manager(void)

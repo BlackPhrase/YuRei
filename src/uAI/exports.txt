@@ -1,0 +1,36 @@
+uai::sound_user_data::sound_user_data(struct uai::sound_user_data const &)
+uai::sound_user_data::sound_user_data(void)
+uai::sound_user_data_base::sound_user_data_base(void)
+struct uai::space_restriction::shape & uai::space_restriction::shape::operator=(struct uai::space_restriction::shape const &)
+struct uai::sound_user_data & uai::sound_user_data::operator=(struct uai::sound_user_data const &)
+struct uai::sound_user_data_base & uai::sound_user_data_base::operator=(struct uai::sound_user_data_base const &)
+const uai::sound_user_data::`vftable'
+_add@20
+_add_edge@16
+_construct@16
+_create_brain_unit@16
+_create_graph@8
+_create_graph_vertex@20
+_create_ground_holder@4
+_create_sound_collection@20
+_create_sound_player@8
+_create_sound_position_tracker_bone@4
+_get_graph@8
+_get_graph_vertex@8
+_get_ground_holder@4
+_matrix_convention@4
+_notify_on_debug_render@0
+_notify_on_object_destroy@4
+_option@8
+_release_brain_unit@4
+_release_ground_holder@4
+_release_sound_collection@4
+_release_sound_player@4
+_release_sound_position_tracker_bone@4
+_release_sound_user_data@4
+_remove@8
+_remove_edge@12
+_remove_graph@8
+_remove_graph_vertex@8
+_uai_assign_engine@4
+_uai_notify_on_cleanup@0

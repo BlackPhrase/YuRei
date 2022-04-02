@@ -1,0 +1,2 @@
+struct skeleton::manager * skeleton::create(struct skeleton::configuration *)
+void skeleton::destroy(void)

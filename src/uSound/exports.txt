@@ -1,0 +1,2 @@
+struct usound::manager * usound::create(struct usound::configuration *)
+void usound::destroy(void)
