@@ -25,7 +25,7 @@ public:
 	void on_window_activate(bool bState);
 	
 	void pause(bool bState);
-	bool paused() const;
+	bool paused() const {return mbPaused;}
 	
 	void pre_cache(unsigned int);
 	
@@ -36,6 +36,7 @@ public:
 	
 	void switch_to_edit_mode();
 private:
+	bool mbPaused{false};
 };
 
 extern cengine engine;
