@@ -9,6 +9,8 @@ public:
 	cenvironment(const cenvironment &other);
 	~cenvironment();
 	
+	cenvironment &operator=(const cenvironment &other);
+	
 	void load();
 	void unload();
 	

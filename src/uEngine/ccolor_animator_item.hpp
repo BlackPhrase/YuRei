@@ -7,6 +7,8 @@ public:
 	ccolor_animator_item(const ccolor_animator_item &other);
 	~ccolor_animator_item();
 	
+	ccolor_animator_item &operator=(const ccolor_animator_item &other);
+	
 	void init_default();
 	
 	void delete_key(int nKey);

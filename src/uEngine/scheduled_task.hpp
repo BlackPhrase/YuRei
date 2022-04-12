@@ -9,6 +9,10 @@ public:
 	scheduled_task(const scheduled_task &other);
 	~scheduled_task();
 	
+	// TODO: vtable
+	
+	scheduled_task &operator=(const scheduled_task &other);
+	
 	void schedule_register();
 	void schedule_unregister();
 	

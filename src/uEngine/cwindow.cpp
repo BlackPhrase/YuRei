@@ -4,7 +4,7 @@ void WndMsgPump()
 {
 	static MSG Msg{};
 	
-	if(PeekMessage(&Msg, PM_REMOVE))
+	if(PeekMessage(&Msg, nullptr, 0, 0, PM_REMOVE))
 	{
 		TranslateMessage(&Msg);
 		DispatchMessage(&Msg);
@@ -37,8 +37,9 @@ cwindow::~cwindow()
 {
 };
 
-cwindow &cwindow::operator(const cwindow &other)
+cwindow &cwindow::operator=(const cwindow &other)
 {
+	return *this;
 };
 
 void cwindow::initialize(unsigned int width, unsigned int height, bool fullscreen, HWND hWnd, HWND hWndParent)

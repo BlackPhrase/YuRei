@@ -6,6 +6,8 @@ public:
 	capplication();
 	~capplication();
 	
+	capplication &operator=(const capplication &other);
+	
 	void start(const char *cmdline);
 	
 	void load_title(char *, char *);

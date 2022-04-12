@@ -7,6 +7,10 @@ public:
 	igame_persistent(const igame_persistent &other);
 	~igame_persistent();
 	
+	// TODO: vtable
+	
+	igame_persistent &operator=(const igame_persistent &other);
+	
 	void start(const char *);
 	
 	void disconnect();

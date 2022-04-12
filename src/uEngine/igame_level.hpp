@@ -10,6 +10,11 @@ public:
 	igame_level(const igame_level &other);
 	~igame_level();
 	
+	// TODO: const igame_level::`vftable'{for `iconstructable'}
+	// TODO: const igame_level::`vftable'{for `uinput::receiver'}
+	
+	igame_level &operator=(const igame_level &other);
+	
 	bool load(str_shared path);
 	
 	bool load_game_specific_before();
@@ -28,8 +33,9 @@ public:
 	void free_id(unsigned short id);
 	
 	void sound_event_register(const struct usound::event &event);
-	
 	void sound_event_dispatch();
+	
+	void net_stop();
 	
 	str_shared name() const;
 	str_shared level_path() const;

@@ -7,7 +7,7 @@ public:
 	cwindow(const cwindow &other);
 	virtual ~cwindow();
 	
-	cwindow &operator(const cwindow &other);
+	cwindow &operator=(const cwindow &other);
 	
 	void initialize(unsigned int width, unsigned int height, bool fullscreen, HWND hWnd, HWND hWndParent);
 	void destroy();
