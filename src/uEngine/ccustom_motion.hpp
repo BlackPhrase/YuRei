@@ -15,8 +15,8 @@ public:
 	int frame_start();
 	int frame_end();
 	
-	void save();
-	bool load();
+	void save(class gtl::intrusive_ptr<class vfs::iwriter, struct gtl::intrusive_base, class gtl::intrusive_default_functionality>);
+	bool load(class gtl::intrusive_ptr<class vfs::ireader, struct gtl::intrusive_base, class gtl::intrusive_default_functionality>);
 	
 	void set_name(const char *name);
 	void set_param(int, int, float);

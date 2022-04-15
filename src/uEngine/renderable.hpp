@@ -16,4 +16,6 @@ public:
 	bool renderable_shadow_generate();
 	
 	uobject *renderable_dcast_uobject() const;
+	
+	class gtl::intrusive_ptr<class urender::object_attach, struct gtl::intrusive_base, class gtl::intrusive_default_functionality> renderable_roa() const;
 };

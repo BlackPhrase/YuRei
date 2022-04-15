@@ -1,5 +1,9 @@
 #pragma once
 
+class cbone;
+class str_shared;
+struct st_bone_motion;
+
 class csmotion
 {
 public:
@@ -17,16 +21,20 @@ public:
 	
 	void copy_motion(csmotion *pOther);
 	
-	void save();
-	bool load();
+	void save(class gtl::intrusive_ptr<class vfs::iwriter, struct gtl::intrusive_base, class gtl::intrusive_default_functionality>);
+	bool load(class gtl::intrusive_ptr<class vfs::ireader, struct gtl::intrusive_base, class gtl::intrusive_default_functionality>);
 	
 	void optimize();
 	
 	void world_rotate(int, float x, float y, float z);
 	
-	void _evaluate();
+	void _evaluate(int, float, struct _vec3<float> &, struct _vec3<float>  &);
 	
-	class u_vector<struct st_bone_motion> &bone_motions();
+	void sort_bones_by_skeleton(class u_vector<cbone*> &);
+	
+	class u_vector<st_bone_motion> &bone_motions() const;
+	
+	st_bone_motion *find_bone_motion(str_shared sName) const;
 	
 	struct _flags<unsigned char> get_motion_flags(int) const;
 };

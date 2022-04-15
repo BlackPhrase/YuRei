@@ -5,6 +5,8 @@ class renderable;
 
 struct _matrix;
 
+class icollision_form;
+
 class uobject
 {
 public:
@@ -57,6 +59,16 @@ public:
 	
 	bool renderable_shadow_generate();
 	void renderable_render();
+	
+	void force_transform(const struct _matrix<float> &);
+	
+	void center(struct _vec3<float> &vPos);
+	
+	icollision_form *cform() const;
+	
+	const class _aabb3<float> &bounding_box() const;
+	
+	class urender::sector *sector() const;
 	
 	uobject *renderable_dcast_uobject() const;
 	
@@ -112,4 +124,8 @@ public:
 	
 	uobject *dcast_uobject() const;
 	renderable *dcast_renderable() const;
+	
+	class gtl::intrusive_ptr<class urender::model, struct gtl::intrusive_base, class gtl::intrusive_default_functionality> visual() const;
+	
+	class gtl::intrusive_ptr<class urender::object_attach, struct gtl::intrusive_base, class gtl::intrusive_default_functionality> ROA() const;
 };
