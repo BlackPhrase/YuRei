@@ -8,4 +8,13 @@ target_sources(${PROJECT_NAME}
 	PRIVATE ${PROJECT_SOURCES}
 )
 
+target_link_libraries(${PROJECT_NAME} uUI uCore uCollision uEngine uScript uAI)
+
+# TODO
+#target_link_libraries(${PROJECT_NAME} uPhysics) #uPhysics = ode.dll/physx.dll
+
+if(WIN32)
+	target_link_libraries(${PROJECT_NAME} d3dx9)
+endif()
+
 install(TARGETS ${PROJECT_NAME} DESTINATION .)
