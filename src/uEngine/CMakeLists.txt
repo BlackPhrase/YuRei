@@ -8,4 +8,15 @@ target_sources(${PROJECT_NAME}
 	PRIVATE ${PROJECT_SOURCES}
 )
 
+target_link_libraries(${PROJECT_NAME} uMath uCore uScript uAI uCollision uInput)
+# TODO: uSound
+
+if(WIN32)
+	target_link_libraries(${PROJECT_NAME} d3dx9 winmm)
+endif()
+
+set_target_properties(${PROJECT_NAME} PROPERTIES
+	ENABLE_EXPORTS ON
+)
+
 install(TARGETS ${PROJECT_NAME} DESTINATION .)
