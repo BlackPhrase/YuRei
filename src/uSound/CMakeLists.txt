@@ -3,7 +3,7 @@ project(uSound)
 # Find the required packages
 find_package(OpenAL)
 
-add_library(${PROJECT_NAME} MODULE)
+add_library(${PROJECT_NAME} SHARED)
 
 target_include_directories(${PROJECT_NAME}
 	PRIVATE ${OPENAL_INCLUDE_DIR}
