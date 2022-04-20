@@ -1,5 +1,7 @@
 #pragma once
 
+#include "OALHeaders.hpp"
+
 class csounddataoal;
 
 // TODO: csoundemitteroal?

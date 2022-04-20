@@ -2,6 +2,8 @@
 
 // sound data = sound buffers
 
+#include "OALHeaders.hpp"
+
 class csounddataoal
 {
 public:

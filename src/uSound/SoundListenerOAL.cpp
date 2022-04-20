@@ -1,4 +1,5 @@
 #include "SoundListenerOAL.hpp"
+#include "OALHeaders.hpp"
 
 csoundlisteneroal::csoundlisteneroal()
 {

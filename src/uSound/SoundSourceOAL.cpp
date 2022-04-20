@@ -76,30 +76,34 @@ void csoundsourceoal::set_looping(bool bState)
 
 float csoundsourceoal::get_volume() const
 {
-	return TODO;
+	return 0.0f;
 };
 
 float csoundsourceoal::get_pitch() const
 {
-	return TODO;
+	return 0.0f;
 };
 
 float *csoundsourceoal::get_position() const
 {
-	return TODO;
+	return nullptr;
 };
 
 float *csoundsourceoal::get_velocity() const
 {
-	return TODO;
+	return nullptr;
 };
 
 bool csoundsourceoal::is_playing() const
 {
-	return alGetSourcei(mnID, AL_SOURCE_STATE) == AL_PLAYING;
+	int nSourceState{0};
+	alGetSourcei(mnID, AL_SOURCE_STATE, &nSourceState);
+	return nSourceState == AL_PLAYING;
 };
 
 bool csoundsourceoal::is_looping() const
 {
-	return alGetSourcei(mnID, AL_LOOPING);
+	int nLoopingState{0};
+	alGetSourcei(mnID, AL_LOOPING, &nLoopingState);
+	return nLoopingState;
 };

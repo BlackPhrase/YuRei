@@ -1,17 +1,28 @@
+#include <stdexcept>
+
 #include "SoundOpenAL.hpp"
 
 csoundopenal::csoundopenal()
 {
-	mpDevice = alOpenDevice(0);
-	mpContext = alCreateContext(mpDevice, 0);
+	mpDevice = alcOpenDevice(0);
 	
-	alMakeContextCurrent(mpContext);
+	if(!mpDevice)
+		throw std::runtime_error("* [sound] OpenAL: Failed to create device.");
+	
+	mpContext = alcCreateContext(mpDevice, 0);
+	
+	if(mpContext)
+		throw std::runtime_error("* [sound] OpenAL: Failed to create context.");
+	
+	alcMakeContextCurrent(mpContext);
+	
+	bool bEnumExtPresent{alcIsExtensionPresent(mpDevice, "ALC_ENUMERATION_EXT")};
 };
 
 csoundopenal::~csoundopenal()
 {
-	alMakeContextCurrent(nullptr);
+	alcMakeContextCurrent(nullptr);
 	
-	alDestroyContext(mpContext);
-	alCloseDevice(mpDevice);
+	alcDestroyContext(mpContext);
+	alcCloseDevice(mpDevice);
 };

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "OALHeaders.hpp"
+
 class csoundopenal
 {
 public:
@@ -11,5 +13,6 @@ public:
 	
 	void update();
 private:
-	ALdevice *mpDevice{nullptr};
+	ALCdevice *mpDevice{nullptr};
+	ALCcontext *mpContext{nullptr};
 };

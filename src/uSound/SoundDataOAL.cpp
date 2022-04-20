@@ -13,5 +13,5 @@ csounddataoal::~csounddataoal()
 void csounddataoal::loadfromfile(const char *sFilePath)
 {
 	// TODO: actually load data from the file
-	alBufferData(mnBufferID);
+	//alBufferData(mnBufferID); // TODO
 };
