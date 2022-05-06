@@ -1,5 +1,9 @@
 #pragma once
 
+#include <memory>
+
+class cwindow;
+
 class capplication
 {
 public:
@@ -21,6 +25,7 @@ public:
 	void on_disconnect();
 	void on_quit();
 private:
+	std::unique_ptr<cwindow> mpWindow;
 };
 
 extern capplication *g_app;
