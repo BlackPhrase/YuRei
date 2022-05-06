@@ -1,5 +1,9 @@
 #pragma once
 
+#include <windows.h>
+
+void WndMsgPump();
+
 class cwindow
 {
 public:
@@ -13,4 +17,6 @@ public:
 	void destroy();
 	
 	void resize(unsigned int width, unsigned int height, bool fullscreen);
+private:
+	HWND mhWnd{nullptr};
 };

@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 #include "cwindow.hpp"
 
 void WndMsgPump()
@@ -19,7 +21,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		PostQuitMessage(0);
 		break;
 	default:
-		return DefWndProc(hWnd, uMsg, wParam, lParam);
+		return DefWindowProc(hWnd, uMsg, wParam, lParam);
 	};
 	
 	return 0;
@@ -61,18 +63,18 @@ void cwindow::initialize(unsigned int width, unsigned int height, bool fullscree
 	WndClass.hInstance = hAppInstance;
 	WndClass.hIcon = LoadIcon(nullptr, IDI_APPLICATION);
 	WndClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
-	WndClass.hbrBackground = GetStockObject(BLACK_BRUSH);
+	WndClass.hbrBackground = reinterpret_cast<HBRUSH>(GetStockObject(BLACK_BRUSH));
 	WndClass.lpszMenuName = "MainMenu";
 	WndClass.lpszClassName = "MainWindowClass";
 	
 	if(!RegisterClass(&WndClass))
 		throw std::runtime_error("");
 	
-	DWORD dwWndStyle{0};
+	DWORD dwWndStyle{WS_OVERLAPPEDWINDOW};
 	DWORD dwWndExStyle{0};
 	
 	int nWndXPos{0};
-	int nWndYPos{0}
+	int nWndYPos{0};
 	
 	if(fullscreen)
 	{
@@ -81,6 +83,11 @@ void cwindow::initialize(unsigned int width, unsigned int height, bool fullscree
 	};
 	
 	mhWnd = CreateWindowEx(dwWndExStyle, "MainWindowClass", "U-Engine", dwWndStyle, nWndXPos, nWndYPos, width, height, hWndParent, nullptr, hAppInstance, nullptr);
+	
+	if(!mhWnd)
+		throw std::runtime_error("Failed to create a window!");
+	
+	ShowWindow(mhWnd, SW_NORMAL); // TODO: remove?
 };
 
 void cwindow::destroy()
