@@ -1,4 +1,11 @@
 #include <cstdlib>
+#include <cstring>
+
+#include <memory>
+
+#include <iostream>
+
+#include "capplication.hpp"
 
 int main(int argc, char **argv)
 {
@@ -24,6 +31,15 @@ int main(int argc, char **argv)
 		if(strstr(argv[i], "-editor"))
 			bEditorMode = true;
 	};
+	
+	auto pApp{std::make_unique<capplication>()};
+	
+	pApp->start("");
+	
+	while(true)
+		pApp->on_frame();
+	
+	//std::cin.get();
 	
 	return EXIT_SUCCESS;
 };
