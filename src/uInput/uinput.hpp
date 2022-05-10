@@ -1,17 +1,21 @@
+#pragma once
+
+#include <coretypes.hpp>
+
 namespace uinput
 {
 
-struct configuration
+struct YUREI_MODULE_API configuration
 {
 	// TODO
 };
 
-struct manager
+struct YUREI_MODULE_API manager
 {
 	// TODO
 };
 
-manager *create(configuration *pConfig);
-void destroy();
+YUREI_MODULE_API manager *create(configuration *pConfig);
+YUREI_MODULE_API void destroy();
 
 };
