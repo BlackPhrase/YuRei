@@ -7,7 +7,8 @@ public:
 	cengine(const cengine &other);
 	~cengine();
 	
-	cengine &operator=(const cengine &other)
+	cengine &operator=(const cengine &other);
+	
 	void create();
 	void destroy();
 	
