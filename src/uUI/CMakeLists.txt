@@ -8,4 +8,6 @@ target_sources(${PROJECT_NAME}
 	PRIVATE ${PROJECT_SOURCES}
 )
 
+target_link_libraries(${PROJECT_NAME} uCore uEngine)
+
 install(TARGETS ${PROJECT_NAME} DESTINATION .)
