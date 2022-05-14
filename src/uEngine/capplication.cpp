@@ -55,6 +55,12 @@ void capplication::sound_update()
 void capplication::on_frame()
 {
 	WndMsgPump();
+	
+	g_backend->begin_frame();
+	
+	// TODO
+	
+	g_backend->end_frame();
 };
 
 void capplication::on_disconnect()
