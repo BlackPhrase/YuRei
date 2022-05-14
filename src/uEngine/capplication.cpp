@@ -1,5 +1,10 @@
+#include <u_core.hpp>
+
+#include <coretypes.hpp>
+#include <../urender/urender.hpp>
+
 #include "capplication.hpp"
-//#include "cengine.hpp"
+#include "cengine.hpp"
 #include "cwindow.hpp"
 
 capplication *g_app{nullptr};
@@ -16,17 +21,19 @@ capplication::~capplication()
 
 void capplication::start(const char *cmdline)
 {
+	core._initialize(cmdline);
+	
 	mpWindow = std::make_unique<cwindow>();
 	
 	mpWindow->initialize(1280, 600, false, nullptr, nullptr);
 	
-	// TODO
+	engine.create();
 	
-	//engine.create();
+	g_render->init(mpWindow->mhWnd);
 	
-	//engine.run_prepare();
-	//engine.run();
-	//engine.run_unprepare();
+	engine.run_prepare();
+	engine.run();
+	engine.run_unprepare();
 };
 
 void capplication::load_title(char *, char *)
@@ -56,6 +63,7 @@ void capplication::on_disconnect()
 
 void capplication::on_quit()
 {
-	//engine.destroy();
+	engine.destroy();
 	mpWindow->destroy();
+	core._destroy();
 };
