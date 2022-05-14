@@ -1,4 +1,7 @@
 set(CMAKE_SHARED_MODULE_PREFIX "")
+set(CMAKE_SHARED_LIBRARY_PREFIX "")
+
+add_subdirectory(uMath)
 
 add_subdirectory(uAI)
 add_subdirectory(uCollision)
