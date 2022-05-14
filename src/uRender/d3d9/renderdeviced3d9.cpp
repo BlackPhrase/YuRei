@@ -1,32 +1,13 @@
-#include <d3d9.h>
+#include "../urender.hpp"
+
+#include "renderdeviced3d9.hpp"
 
 namespace urender
 {
 
-class crenderdeviced3d9
-{
-public:
-	crenderdeviced3d9();
-	~crenderdeviced3d9();
-	
-	void update();
-	
-	void clear();
-	
-	void begin_scene();
-	void end_scene();
-	
-	void present();
-private:
-	void init();
-	void shutdown();
-private:
-	IDirect3DDevice9 *mpDevice{nullptr};
-};
-
 crenderdeviced3d9 gRenderDevice;
 
-backend::begin_frame()
+void backend::begin_frame()
 {
 	gRenderDevice.update();
 	
@@ -35,7 +16,7 @@ backend::begin_frame()
 	gRenderDevice.begin_scene();
 };
 
-backend::end_frame()
+void backend::end_frame()
 {
 	gRenderDevice.end_scene();
 	
@@ -44,7 +25,7 @@ backend::end_frame()
 
 crenderdeviced3d9::crenderdeviced3d9()
 {
-	init();
+	//init(hWindow);
 };
 
 crenderdeviced3d9::~crenderdeviced3d9()
@@ -87,7 +68,7 @@ void crenderdeviced3d9::present()
 
 using pfnDirect3DCreate9 = IDirect3D9 *(*)(UINT SDKVersion);
 
-void crenderdeviced3d9::init()
+void crenderdeviced3d9::init(void *pWindow)
 {
 	HMODULE pD3D9Lib{LoadLibrary("d3d9.dll")};
 	
@@ -107,21 +88,21 @@ void crenderdeviced3d9::init()
 	D3DPRESENT_PARAMETERS D3DPresentParams{};
 	ZeroMemory(&D3DPresentParams, sizeof(D3DPresentParams));
 	
-	D3DPresentParams.Windowed = TODO;
+	D3DPresentParams.Windowed = TRUE; // TODO
 	D3DPresentParams.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	
-	D3DPresentParams.BackBufferWidth = TODO;
-	D3DPresentParams.BackBufferHeight = TODO;
+	//D3DPresentParams.BackBufferWidth = TODO; // Will be taken from the hDeviceWindow or focus window
+	//D3DPresentParams.BackBufferHeight = TODO; // Will be taken from the hDeviceWindow or focus window
 	D3DPresentParams.BackBufferCount = 1;
 	
-	D3DPresentParams.hDeviceWindow = TODO;
+	//D3DPresentParams.hDeviceWindow = TODO; // Will use the foucs window instead
 	
-	D3DPresentParams.EnableAutoDepthStencil = true;
+	D3DPresentParams.EnableAutoDepthStencil = TRUE;
 	D3DPresentParams.AutoDepthStencilFormat = D3DFMT_D24S8;
 	
 	D3DPresentParams.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
 	
-	bool bFailed{pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, pWindow->GetHandle(), D3DCREATE_SOFTWARE_VERTEXPROCESSING, &D3DPresentParams, &mpDevice)};
+	bool bFailed{FAILED(pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, reinterpret_cast<HWND>(pWindow), D3DCREATE_SOFTWARE_VERTEXPROCESSING, &D3DPresentParams, &mpDevice))};
 	
 	pD3D->Release();
 	
