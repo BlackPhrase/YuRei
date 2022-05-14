@@ -16,8 +16,8 @@ public:
 class YUREI_MODULE_API backend
 {
 public:
-	void begin_frame();
-	void end_frame();
+	virtual void begin_frame();
+	virtual void end_frame();
 };
 
 class YUREI_MODULE_API draw_utils
