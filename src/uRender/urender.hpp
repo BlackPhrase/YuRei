@@ -9,6 +9,8 @@ class YUREI_MODULE_API manager
 {
 public:
 	manager() = default;
+	
+	virtual void init(void *pWindow);
 };
 
 class YUREI_MODULE_API backend
