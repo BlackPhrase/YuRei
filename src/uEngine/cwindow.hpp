@@ -17,6 +17,6 @@ public:
 	void destroy();
 	
 	void resize(unsigned int width, unsigned int height, bool fullscreen);
-private:
+//private: // TODO: temp
 	HWND mhWnd{nullptr};
 };

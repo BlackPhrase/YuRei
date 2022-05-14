@@ -2,6 +2,9 @@
 
 #include "cwindow.hpp"
 
+constexpr auto WINDOW_CLASS_NAME{"MainWindowClass"};
+constexpr auto WINDOW_TITLE{"U-Engine"};
+
 void WndMsgPump()
 {
 	static MSG Msg{};
@@ -65,7 +68,7 @@ void cwindow::initialize(unsigned int width, unsigned int height, bool fullscree
 	WndClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
 	WndClass.hbrBackground = reinterpret_cast<HBRUSH>(GetStockObject(BLACK_BRUSH));
 	WndClass.lpszMenuName = "MainMenu";
-	WndClass.lpszClassName = "MainWindowClass";
+	WndClass.lpszClassName = WINDOW_CLASS_NAME;
 	
 	if(!RegisterClass(&WndClass))
 		throw std::runtime_error("");
@@ -82,7 +85,7 @@ void cwindow::initialize(unsigned int width, unsigned int height, bool fullscree
 		nWndYPos = CW_USEDEFAULT;
 	};
 	
-	mhWnd = CreateWindowEx(dwWndExStyle, "MainWindowClass", "U-Engine", dwWndStyle, nWndXPos, nWndYPos, width, height, hWndParent, nullptr, hAppInstance, nullptr);
+	mhWnd = CreateWindowEx(dwWndExStyle, WINDOW_CLASS_NAME, WINDOW_TITLE, dwWndStyle, nWndXPos, nWndYPos, width, height, hWndParent, nullptr, hAppInstance, nullptr);
 	
 	if(!mhWnd)
 		throw std::runtime_error("Failed to create a window!");
