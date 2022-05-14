@@ -1,2 +1,0 @@
-factory_create
-factory_destroy
