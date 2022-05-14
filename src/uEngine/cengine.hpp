@@ -1,5 +1,15 @@
 #pragma once
 
+#include <coretypes.hpp>
+
+namespace urender
+{
+class backend;
+};
+
+YUREI_MODULE_API extern urender::manager *g_render;
+YUREI_MODULE_API extern urender::backend *g_backend;
+
 class cengine
 {
 public:

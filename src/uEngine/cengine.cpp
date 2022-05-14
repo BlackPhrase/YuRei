@@ -18,8 +18,8 @@ HMODULE gpGameLib{nullptr}; // TODO: make private
 struct usound::manager *g_sound{nullptr};
 struct uinput::manager *g_input{nullptr};
 
-YUREI_MODULE_API urender::manager *g_render{nullptr};
-YUREI_MODULE_API urender::backend *g_backend{nullptr};
+/*YUREI_MODULE_API*/ urender::manager *g_render{nullptr};
+/*YUREI_MODULE_API*/ urender::backend *g_backend{nullptr};
 YUREI_MODULE_API urender::draw_utils *g_du{nullptr};
 
 cengine engine;
@@ -43,24 +43,26 @@ cengine &cengine::operator=(const cengine &other)
 
 void cengine::create()
 {
-	gpEditorLib = LoadLibrary("uEditor");
-	
-	// TODO: get exports from the game module
-	
-	usound::configuration *pSoundConfig{nullptr};
-	//usound::manager *pSoundManager{usound::create(pSoundConfig)};
+	usound::configuration SoundConfig{};
+	//usound::manager *pSoundManager{usound::create(&SoundConfig)};
 	
 	//g_sound = pSoundManager;
 	
-	uinput::configuration *pInputConfig{nullptr};
-	uinput::manager *pInputManager{uinput::create(pInputConfig)};
+	uinput::configuration InputConfig{};
+	uinput::manager *pInputManager{uinput::create(&InputConfig)};
 	
 	g_input = pInputManager;
 	
 	gpRenderLib = LoadLibrary("uRender");
 	gpRenderDebugLib = LoadLibrary("uRenderDebug");
 	
+	// TODO: load the editor library only if in editor mode
+	
+	gpEditorLib = LoadLibrary("uEditor");
+	
 	gpGameLib = LoadLibrary("uGame");
+	
+	// TODO: get exports from the game module
 };
 
 void cengine::destroy()
