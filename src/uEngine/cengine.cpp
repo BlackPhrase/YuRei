@@ -23,6 +23,11 @@ struct uinput::manager *g_input{nullptr};
 /*YUREI_MODULE_API*/ urender::backend *g_backend{nullptr};
 YUREI_MODULE_API urender::draw_utils *g_du{nullptr};
 
+#include "cwindow.hpp"
+
+// TODO: temp
+extern cwindow *gpWindow;
+
 cengine engine;
 
 cengine::cengine()
@@ -50,6 +55,9 @@ void cengine::create()
 	//g_sound = pSoundManager;
 	
 	uinput::configuration InputConfig{};
+	InputConfig.pWindow = gpWindow->mhWnd;
+	InputConfig.nScreenWidth = 1280;
+	InputConfig.nScreenHeight = 600;
 	uinput::manager *pInputManager{uinput::create(&InputConfig)};
 	
 	g_input = pInputManager;
@@ -94,6 +102,8 @@ void cengine::run_update()
 {
 	
 	g_app->on_frame();
+	
+	g_input->frame();
 };
 
 void cengine::run()

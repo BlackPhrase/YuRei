@@ -9,6 +9,9 @@
 
 capplication *g_app{nullptr};
 
+// TODO: temp
+cwindow *gpWindow{nullptr};
+
 capplication::capplication()
 {
 	g_app = this;
@@ -26,6 +29,8 @@ void capplication::start(const char *cmdline)
 	mpWindow = std::make_unique<cwindow>();
 	
 	mpWindow->initialize(1280, 600, false, nullptr, nullptr);
+	
+	gpWindow = mpWindow.get();
 	
 	engine.create();
 	
