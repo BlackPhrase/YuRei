@@ -12,6 +12,8 @@ target_sources(${PROJECT_NAME}
 	PRIVATE ${PROJECT_SOURCES}
 )
 
+add_subdirectory(dinput)
+
 target_link_libraries(${PROJECT_NAME} uCore)
 
 install(TARGETS ${PROJECT_NAME} DESTINATION .)

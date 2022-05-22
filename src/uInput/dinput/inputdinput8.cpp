@@ -1,3 +1,6 @@
+//#include <debug.hpp>
+
+#include "../uinput.hpp"
 #include "inputdinput8.hpp"
 
 namespace uinput
@@ -13,7 +16,7 @@ bool cinputdinput8::init(void *pWindow, int nScreenWidth, int nScreenHeight)
 	mnScreenWidth = nScreenHeight;
 	mnScreenHeight = nScreenHeight;
 	
-	if(FAILED(DirectInput8Create(GetModuleHandle(nullptr), DIRECTINPUT_VERSION, IID_DirectInput8, reinterpret_cast<void**>(&mpDI), nullptr)))
+	if(FAILED(DirectInput8Create(GetModuleHandle(nullptr), DIRECTINPUT_VERSION, IID_IDirectInput8, reinterpret_cast<void**>(&mpDI), nullptr)))
 		return false;
 	
 	// Keyboard
@@ -21,12 +24,14 @@ bool cinputdinput8::init(void *pWindow, int nScreenWidth, int nScreenHeight)
 	if(FAILED(mpDI->CreateDevice(GUID_SysKeyboard, &mpKeyboard, nullptr)))
 		return false;
 	
-	
-	if(FAILED(mpKeyboard->SetDataFormat(&c_dfDIKeyboard))
+	if(FAILED(mpKeyboard->SetDataFormat(&c_dfDIKeyboard)))
 		return false;
 	
 	if(FAILED(mpKeyboard->SetCooperativeLevel(reinterpret_cast<HWND>(pWindow), DISCL_FOREGROUND | DISCL_EXCLUSIVE)))
+	{
+		//msg("INPUT: Can't set the coop level.");
 		return false;
+	};
 	
 	if(FAILED(mpKeyboard->Acquire()))
 		return false;
@@ -36,12 +41,14 @@ bool cinputdinput8::init(void *pWindow, int nScreenWidth, int nScreenHeight)
 	if(FAILED(mpDI->CreateDevice(GUID_SysMouse, &mpMouse, nullptr)))
 		return false;
 	
-	
-	if(FAILED(mpMouse->SetDataFormat(&c_dfDIMouse))
+	if(FAILED(mpMouse->SetDataFormat(&c_dfDIMouse)))
 		return false;
 	
 	if(FAILED(mpMouse->SetCooperativeLevel(reinterpret_cast<HWND>(pWindow), DISCL_FOREGROUND | DISCL_NONEXCLUSIVE)))
+	{
+		//msg("INPUT: Can't set the coop level.");
 		return false;
+	};
 	
 	if(FAILED(mpMouse->Acquire()))
 		return false;
@@ -64,6 +71,10 @@ void cinputdinput8::frame()
 
 bool cinputdinput8::is_key_down(int nKey) const
 {
+	// TODO: remove
+	if(nKey == static_cast<int>(Keys::Escape))
+		nKey = DIK_ESCAPE;
+	
 	return mnKeyboardState[nKey] & 0x80;
 };
 
@@ -94,7 +105,7 @@ bool cinputdinput8::read_keyboard()
 {
 	HRESULT hResult{mpKeyboard->GetDeviceState(sizeof(mnKeyboardState), reinterpret_cast<LPVOID>(&mnKeyboardState))};
 	
-	if(FAILED(hResult)
+	if(FAILED(hResult))
 	{
 		if(hResult == DIERR_INPUTLOST || hResult == DIERR_NOTACQUIRED)
 			mpKeyboard->Acquire();
@@ -109,7 +120,7 @@ bool cinputdinput8::read_mouse()
 {
 	HRESULT hResult{mpMouse->GetDeviceState(sizeof(DIMOUSESTATE), reinterpret_cast<LPVOID>(&mMouseState))};
 	
-	if(FAILED(hResult)
+	if(FAILED(hResult))
 	{
 		if(hResult == DIERR_INPUTLOST || hResult == DIERR_NOTACQUIRED)
 			mpMouse->Acquire();
@@ -122,8 +133,8 @@ bool cinputdinput8::read_mouse()
 
 void cinputdinput8::process_input()
 {
-	mnMouseX = mMouseState.IX;
-	mnMouseY = mMouseState.IY;
+	mnMouseX = mMouseState.lX;
+	mnMouseY = mMouseState.lY;
 	
 	clamp_mouse_pos();
 };

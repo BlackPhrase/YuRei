@@ -1,16 +1,19 @@
-#include "uinput.hpp"
-
 #include <cstdio>
+
+#include "cinput_manager.hpp"
+#include "dinput/inputdinput8.hpp"
 
 namespace uinput
 {
 
 manager *gpManager{nullptr};
+cinputdinput8 *gpImpl{nullptr};
 
 manager *create(configuration *pConfig)
 {
 	printf("uInput manager creation!\n");
-	gpManager = new manager(pConfig);
+	gpImpl = new cinputdinput8();
+	gpManager = new cinput_manager(gpImpl, pConfig);
 	return gpManager;
 };
 
@@ -21,6 +24,12 @@ void destroy()
 		delete gpManager;
 		gpManager = nullptr;
 	};
+	
+	if(gpImpl)
+	{
+		delete gpImpl;
+		gpImpl = nullptr;
+	};
 };
 
-};
+}; // namespace uinput

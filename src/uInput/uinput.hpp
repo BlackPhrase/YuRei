@@ -1,13 +1,16 @@
 #pragma once
 
-#include <memory>
-
 #include <coretypes.hpp>
 
 namespace uinput
 {
 
-class cinputdinput8;
+enum class Keys : int
+{
+	Escape
+};
+
+struct receiver;
 
 struct /*YUREI_MODULE_API*/ configuration
 {
@@ -19,13 +22,14 @@ struct /*YUREI_MODULE_API*/ configuration
 
 struct YUREI_MODULE_API manager
 {
-	manager(configuration *pConfig);
+	virtual ~manager() = default;
 	
-	virtual void frame();
+	virtual void frame() = 0;
 	
-	virtual bool is_key_down(int key) const;
-private:
-	std::unique_ptr<cinputdinput8> mpImpl;
+	virtual void add_receiver(receiver *pReceiver) = 0;
+	virtual void remove_receiver(receiver *pReceiver) = 0;
+	
+	virtual bool is_key_down(int key) const = 0;
 };
 
 YUREI_MODULE_API manager *create(configuration *pConfig);
