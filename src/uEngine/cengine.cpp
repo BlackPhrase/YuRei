@@ -6,6 +6,7 @@
 #include <../uinput/uinput.hpp>
 
 #include "cengine.hpp"
+#include "capplication.hpp"
 
 #include <windows.h>
 
@@ -91,10 +92,19 @@ void cengine::run_unprepare()
 
 void cengine::run_update()
 {
+	
+	g_app->on_frame();
 };
 
 void cengine::run()
 {
+	while(true) // !pWindow->close_requested()
+	{
+		if(g_input->is_key_down(static_cast<int>(uinput::Keys::Escape)))
+			g_app->on_quit();
+		
+		run_update();
+	};
 };
 
 void cengine::frame_move()

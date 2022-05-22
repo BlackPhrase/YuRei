@@ -36,10 +36,5 @@ int main(int argc, char **argv)
 	
 	pApp->start("");
 	
-	while(true)
-		pApp->on_frame();
-	
-	//std::cin.get();
-	
 	return EXIT_SUCCESS;
 };
