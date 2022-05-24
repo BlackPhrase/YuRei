@@ -1,6 +1,7 @@
 //#include <debug.hpp>
 
 #include "../uinput.hpp"
+#include "../cinput_dispatcher.hpp"
 #include "inputdinput8.hpp"
 
 namespace uinput
@@ -126,6 +127,8 @@ std::unordered_map<uinput::Keys, int> cinputdinput8::mKeyMap =
 	{uinput::Keys::Num9, DIK_NUMPAD9}
 };
 
+cinputdinput8::cinputdinput8(cinput_dispatcher *pDispatcher) : mpDispatcher(pDispatcher){}
+
 cinputdinput8::~cinputdinput8()
 {
 	shutdown();
@@ -249,6 +252,23 @@ bool cinputdinput8::read_mouse()
 
 void cinputdinput8::process_input()
 {
+	// Keyboard
+	
+	for(int i = 0; i < MAX_KEYBOARD_KEYS; ++i)
+	{
+		auto eKey{to_internal_key(i)};
+		
+		if(is_key_pressed(i))
+			mpDispatcher->key_pressed(eKey);
+		
+		if(is_key_released(i))
+			mpDispatcher->key_released(eKey);
+	};
+	
+	memcpy(mnOldKeyboardState, mnKeyboardState, sizeof(mnKeyboardState));
+	
+	// Mouse
+	
 	mnMouseX = mMouseState.lX;
 	mnMouseY = mMouseState.lY;
 	
@@ -273,6 +293,25 @@ void cinputdinput8::clamp_mouse_pos()
 int cinputdinput8::to_dinput_key(uinput::Keys eKey) const
 {
 	return mKeyMap[eKey];
+};
+
+uinput::Keys cinputdinput8::to_internal_key(int nKey) const
+{
+	for(const auto &[key, value] : mKeyMap)
+		if(value == nKey)
+			return key;
+	
+	return uinput::Keys::Invalid;
+};
+
+bool cinputdinput8::is_key_pressed(int nKey) const
+{
+	return (mnKeyboardState[nKey] & 0x80) && !(mnOldKeyboardState[nKey] & 0x80);
+};
+
+bool cinputdinput8::is_key_released(int nKey) const
+{
+	return !(mnKeyboardState[nKey] & 0x80) && (mnOldKeyboardState[nKey] & 0x80);
 };
 
 }; // namespace uinput

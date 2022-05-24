@@ -9,9 +9,12 @@ constexpr auto MAX_KEYBOARD_KEYS{256};
 
 using tByte = unsigned char;
 
+class cinput_dispatcher;
+
 class cinputdinput8
 {
 public:
+	cinputdinput8(cinput_dispatcher *pDispatcher);
 	~cinputdinput8();
 	
 	bool init(void *pWindow, int nScreenWidth, int nScreenHeight);
@@ -30,12 +33,19 @@ private:
 	void clamp_mouse_pos();
 	
 	int to_dinput_key(uinput::Keys eKey) const;
+	uinput::Keys to_internal_key(int nKey) const;
+	
+	bool is_key_pressed(int nKey) const;
+	bool is_key_released(int nKey) const;
 private:
 	IDirectInput8 *mpDI{nullptr};
 	IDirectInputDevice8 *mpMouse{nullptr};
 	IDirectInputDevice8 *mpKeyboard{nullptr};
 	
+	cinput_dispatcher *mpDispatcher{nullptr};
+	
 	tByte mnKeyboardState[MAX_KEYBOARD_KEYS]{};
+	tByte mnOldKeyboardState[MAX_KEYBOARD_KEYS]{};
 	
 	static std::unordered_map<uinput::Keys, int> mKeyMap;
 	
