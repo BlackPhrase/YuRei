@@ -10,6 +10,8 @@ class cinputdinput8;
 class cinput_dispatcher;
 };
 
+class dummy_receiver;
+
 class cinput_manager : public uinput::manager
 {
 public:
@@ -23,6 +25,8 @@ public:
 	bool is_key_down(int key) const override;
 private:
 	std::unique_ptr<uinput::cinputdinput8> mpImpl;
+	
+	std::unique_ptr<dummy_receiver> mpDummyReceiver;
 	
 	uinput::cinput_dispatcher *mpDispatcher{nullptr};
 };
