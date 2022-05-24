@@ -192,7 +192,7 @@ void cinputdinput8::frame()
 	process_input();
 };
 
-bool cinputdinput8::is_key_down(int nKey) const
+bool cinputdinput8::is_key_down(uinput::Keys eKey) const
 {
 	return mnKeyboardState[to_dinput_key(eKey)] & 0x80;
 };

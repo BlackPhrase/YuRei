@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <unordered_map>
 
 #include "uinput.hpp"
 
@@ -25,6 +26,8 @@ public:
 	bool is_key_down(uinput::Keys eKey) const override;
 	const char *key_to_string(uinput::Keys eKey) const override;
 private:
+	static std::unordered_map<uinput::Keys, const char *> mKeyNameMap;
+	
 	std::unique_ptr<uinput::cinputdinput8> mpImpl;
 	
 	std::unique_ptr<dummy_receiver> mpDummyReceiver;

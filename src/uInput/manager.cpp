@@ -154,7 +154,7 @@ void cinput_manager::remove_receiver(uinput::receiver *pReceiver)
 	mpDispatcher->remove_receiver(pReceiver);
 };
 
-bool cinput_manager::is_key_down(int key) const
+bool cinput_manager::is_key_down(uinput::Keys eKey) const
 {
 	return mpImpl->is_key_down(eKey);
 };

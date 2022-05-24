@@ -1,5 +1,7 @@
 #pragma once
 
+#include <unordered_map>
+
 #include <dinput.h>
 
 namespace uinput
@@ -21,7 +23,7 @@ public:
 	
 	void frame();
 	
-	bool is_key_down(int nKey) const;
+	bool is_key_down(/*const tByte &KeyboardState,*/ uinput::Keys eKey) const;
 private:
 	void shutdown();
 	
