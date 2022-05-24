@@ -147,6 +147,7 @@ struct YUREI_MODULE_API manager
 	virtual void remove_receiver(receiver *pReceiver) = 0;
 	
 	virtual bool is_key_down(uinput::Keys eKey) const = 0;
+	virtual const char *key_to_string(uinput::Keys eKey) const = 0;
 };
 
 YUREI_MODULE_API manager *create(configuration *pConfig);
