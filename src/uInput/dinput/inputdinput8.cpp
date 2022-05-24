@@ -6,6 +6,126 @@
 namespace uinput
 {
 
+std::unordered_map<uinput::Keys, int> cinputdinput8::mKeyMap =
+{
+	{uinput::Keys::Escape, DIK_ESCAPE},
+	//{uinput::Keys::Tilde, DIK_GRAVE},
+	{uinput::Keys::Tab, DIK_TAB},
+	{uinput::Keys::CapsLock, DIK_CAPSLOCK},
+	
+	{uinput::Keys::Enter, DIK_RETURN},
+	
+	{uinput::Keys::LShift, DIK_LSHIFT},
+	{uinput::Keys::RShift, DIK_RSHIFT},
+	
+	{uinput::Keys::LCtrl, DIK_LCONTROL},
+	{uinput::Keys::RCtrl, DIK_RCONTROL},
+	
+	{uinput::Keys::LAlt, DIK_LALT},
+	{uinput::Keys::RAlt, DIK_RALT},
+	//Menu,
+	
+	{uinput::Keys::Up, DIK_UP},
+	{uinput::Keys::Down, DIK_DOWN},
+	{uinput::Keys::Left, DIK_LEFT},
+	{uinput::Keys::Right, DIK_RIGHT},
+	
+	{uinput::Keys::Equals, DIK_EQUALS},
+	{uinput::Keys::Minus, DIK_MINUS},
+	
+	{uinput::Keys::Space, DIK_SPACE},
+	{uinput::Keys::BackSpace, DIK_BACKSPACE},
+	
+	{uinput::Keys::Home, DIK_HOME},
+	{uinput::Keys::End, DIK_END},
+	
+	{uinput::Keys::Insert, DIK_INSERT},
+	{uinput::Keys::Delete, DIK_DELETE},
+	
+	{uinput::Keys::PageUp, DIK_PGUP},
+	{uinput::Keys::PageDown, DIK_PGDN},
+	
+	{uinput::Keys::LBracket, DIK_LBRACKET},
+	{uinput::Keys::RBracket, DIK_RBRACKET},
+	
+	{uinput::Keys::Slash, DIK_SLASH},
+	{uinput::Keys::BackSlash, DIK_BACKSLASH},
+	
+	{uinput::Keys::Period, DIK_PERIOD},
+	{uinput::Keys::Comma, DIK_COMMA},
+	{uinput::Keys::SemiColon, DIK_SEMICOLON},
+	{uinput::Keys::Quote, DIK_APOSTROPHE},
+	
+	{uinput::Keys::A, DIK_A},
+	{uinput::Keys::B, DIK_B},
+	{uinput::Keys::C, DIK_C},
+	{uinput::Keys::D, DIK_D},
+	{uinput::Keys::E, DIK_E},
+	{uinput::Keys::F, DIK_F},
+	{uinput::Keys::G, DIK_G},
+	{uinput::Keys::H, DIK_H},
+	{uinput::Keys::I, DIK_I},
+	{uinput::Keys::J, DIK_J},
+	{uinput::Keys::K, DIK_K},
+	{uinput::Keys::L, DIK_L},
+	{uinput::Keys::M, DIK_M},
+	{uinput::Keys::N, DIK_N},
+	{uinput::Keys::O, DIK_O},
+	{uinput::Keys::P, DIK_P},
+	{uinput::Keys::Q, DIK_Q},
+	{uinput::Keys::R, DIK_R},
+	{uinput::Keys::S, DIK_S},
+	{uinput::Keys::T, DIK_T},
+	{uinput::Keys::U, DIK_U},
+	{uinput::Keys::V, DIK_V},
+	{uinput::Keys::W, DIK_W},
+	{uinput::Keys::X, DIK_X},
+	{uinput::Keys::Y, DIK_Y},
+	{uinput::Keys::Z, DIK_Z},
+	
+	{uinput::Keys::F1, DIK_F1},
+	{uinput::Keys::F2, DIK_F2},
+	{uinput::Keys::F3, DIK_F3},
+	{uinput::Keys::F4, DIK_F4},
+	{uinput::Keys::F5, DIK_F5},
+	{uinput::Keys::F6, DIK_F6},
+	{uinput::Keys::F7, DIK_F7},
+	{uinput::Keys::F8, DIK_F8},
+	{uinput::Keys::F9, DIK_F9},
+	{uinput::Keys::F10, DIK_F10},
+	{uinput::Keys::F11, DIK_F11},
+	{uinput::Keys::F12, DIK_F12},
+	
+	{uinput::Keys::k0, DIK_0},
+	{uinput::Keys::k1, DIK_1},
+	{uinput::Keys::k2, DIK_2},
+	{uinput::Keys::k3, DIK_3},
+	{uinput::Keys::k4, DIK_4},
+	{uinput::Keys::k5, DIK_5},
+	{uinput::Keys::k6, DIK_6},
+	{uinput::Keys::k7, DIK_7},
+	{uinput::Keys::k8, DIK_8},
+	{uinput::Keys::k9, DIK_9},
+	
+	{uinput::Keys::NumPlus, DIK_ADD},
+	{uinput::Keys::NumMinus, DIK_SUBTRACT},
+	{uinput::Keys::NumMultiply, DIK_MULTIPLY},
+	{uinput::Keys::NumDivide, DIK_DIVIDE},
+	{uinput::Keys::NumPeriod, DIK_DECIMAL},
+	{uinput::Keys::NumEnter, DIK_NUMPADENTER},
+	
+	{uinput::Keys::Num0, DIK_NUMPAD0},
+	{uinput::Keys::Num1, DIK_NUMPAD1},
+	{uinput::Keys::Num2, DIK_NUMPAD2},
+	{uinput::Keys::Num3, DIK_NUMPAD3},
+	{uinput::Keys::Num4, DIK_NUMPAD4},
+	{uinput::Keys::Num5, DIK_NUMPAD5},
+	{uinput::Keys::Num6, DIK_NUMPAD6},
+	{uinput::Keys::Num7, DIK_NUMPAD7},
+	{uinput::Keys::Num8, DIK_NUMPAD8},
+	{uinput::Keys::Num9, DIK_NUMPAD9}
+};
+
 cinputdinput8::~cinputdinput8()
 {
 	shutdown();
@@ -71,11 +191,7 @@ void cinputdinput8::frame()
 
 bool cinputdinput8::is_key_down(int nKey) const
 {
-	// TODO: remove
-	if(nKey == static_cast<int>(Keys::Escape))
-		nKey = DIK_ESCAPE;
-	
-	return mnKeyboardState[nKey] & 0x80;
+	return mnKeyboardState[to_dinput_key(eKey)] & 0x80;
 };
 
 void cinputdinput8::shutdown()
@@ -152,6 +268,11 @@ void cinputdinput8::clamp_mouse_pos()
 	
 	if(mnMouseY > mnScreenHeight)
 		mnMouseY = mnScreenHeight;
+};
+
+int cinputdinput8::to_dinput_key(uinput::Keys eKey) const
+{
+	return mKeyMap[eKey];
 };
 
 }; // namespace uinput

@@ -22,7 +22,7 @@ public:
 	void add_receiver(uinput::receiver *pReceiver) override;
 	void remove_receiver(uinput::receiver *pReceiver) override;
 	
-	bool is_key_down(int key) const override;
+	bool is_key_down(uinput::Keys eKey) const override;
 private:
 	std::unique_ptr<uinput::cinputdinput8> mpImpl;
 	

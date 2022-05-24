@@ -28,12 +28,16 @@ private:
 	void process_input();
 	
 	void clamp_mouse_pos();
+	
+	int to_dinput_key(uinput::Keys eKey) const;
 private:
 	IDirectInput8 *mpDI{nullptr};
 	IDirectInputDevice8 *mpMouse{nullptr};
 	IDirectInputDevice8 *mpKeyboard{nullptr};
 	
 	tByte mnKeyboardState[MAX_KEYBOARD_KEYS]{};
+	
+	static std::unordered_map<uinput::Keys, int> mKeyMap;
 	
 	DIMOUSESTATE mMouseState{};
 	
