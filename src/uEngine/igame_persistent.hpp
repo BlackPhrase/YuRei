@@ -1,32 +1,34 @@
 #pragma once
 
-class igame_persistent
+#include <coretypes.hpp>
+
+class YUREI_MODULE_API igame_persistent
 {
 public:
 	igame_persistent();
 	igame_persistent(const igame_persistent &other);
-	~igame_persistent();
+	virtual ~igame_persistent();
 	
 	// TODO: vtable
 	
 	igame_persistent &operator=(const igame_persistent &other);
 	
-	void start(const char *);
+	virtual void start(const char *);
 	
-	void disconnect();
+	virtual void disconnect();
 	
-	void on_app_start();
-	void on_app_end();
+	virtual void on_app_start();
+	virtual void on_app_end();
 	
-	void on_app_activate();
-	void on_app_deactivate();
+	virtual void on_app_activate();
+	virtual void on_app_deactivate();
 	
-	void on_frame();
+	virtual void on_frame();
 	
-	void on_game_start();
-	void on_game_end();
+	virtual void on_game_start();
+	virtual void on_game_end();
 	
-	unsigned int game_type() const;
+	virtual unsigned int game_type() const;
 };
 
-extern igame_persistent *g_game_persistent;
+YUREI_MODULE_API extern igame_persistent *g_game_persistent;

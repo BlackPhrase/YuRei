@@ -1,21 +1,23 @@
 #pragma once
 
-class igame_hud
+#include <coretypes.hpp>
+
+class YUREI_MODULE_API igame_hud
 {
 public:
 	igame_hud();
 	igame_hud(const igame_hud &other);
-	~igame_hud();
+	virtual ~igame_hud();
 	
 	// TODO: vtable
 	
 	igame_hud &operator=(const igame_hud &other);
 	
-	void load();
+	virtual void load();
 	
-	void on_frame();
+	virtual void on_frame();
 	
-	void render_hud();
+	virtual void render_hud();
 };
 
-extern igame_hud *g_game_hud;
+YUREI_MODULE_API extern igame_hud *g_game_hud;
