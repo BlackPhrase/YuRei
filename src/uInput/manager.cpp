@@ -130,6 +130,15 @@ std::unordered_map<uinput::Keys, const char*> cinput_manager::mKeyNameMap =
 	{uinput::Keys::Num9, "kNUMPAD9"}
 };
 
+std::unordered_map<uinput::Buttons, const char *> cinput_manager::mButtonNameMap =
+{
+	{uinput::Buttons::Invalid, "Invalid button"},
+	
+	{uinput::Buttons::Left, "mouse0"},
+	{uinput::Buttons::Right, "mouse1"},
+	{uinput::Buttons::Middle, "mouse2"}
+};
+
 cinput_manager::cinput_manager(uinput::cinput_dispatcher *pDispatcher, uinput::cinputdinput8 *pImpl, uinput::configuration *pConfig) : mpDispatcher(pDispatcher), mpImpl(pImpl)
 {
 	mpDummyReceiver = std::make_unique<dummy_receiver>(this);
@@ -162,6 +171,16 @@ bool cinput_manager::is_key_down(uinput::Keys eKey) const
 const char *cinput_manager::key_to_string(uinput::Keys eKey) const
 {
 	return mKeyNameMap[eKey];
+};
+
+bool cinput_manager::is_button_down(uinput::Buttons eButton) const
+{
+	return mpImpl->is_button_down(eButton);
+};
+
+const char *cinput_manager::button_to_string(uinput::Buttons eButton) const
+{
+	return mButtonNameMap[eButton];
 };
 
 //}; // namespace uinput

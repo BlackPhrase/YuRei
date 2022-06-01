@@ -24,6 +24,7 @@ public:
 	void frame();
 	
 	bool is_key_down(/*const tByte &KeyboardState,*/ uinput::Keys eKey) const;
+	bool is_button_down(uinput::Buttons eButton) const;
 private:
 	void shutdown();
 	
@@ -37,8 +38,14 @@ private:
 	int to_dinput_key(uinput::Keys eKey) const;
 	uinput::Keys to_internal_key(int nKey) const;
 	
+	int to_dinput_button(uinput::Buttons eButton) const;
+	uinput::Buttons to_internal_button(int nButton) const;
+	
 	bool is_key_pressed(int nKey) const;
 	bool is_key_released(int nKey) const;
+	
+	bool is_button_pressed(int nButton) const;
+	bool is_button_released(int nButton) const;
 private:
 	IDirectInput8 *mpDI{nullptr};
 	IDirectInputDevice8 *mpMouse{nullptr};
@@ -50,8 +57,10 @@ private:
 	tByte mnOldKeyboardState[MAX_KEYBOARD_KEYS]{};
 	
 	static std::unordered_map<uinput::Keys, int> mKeyMap;
+	static std::unordered_map<uinput::Buttons, int> mButtonMap;
 	
 	DIMOUSESTATE mMouseState{};
+	DIMOUSESTATE mOldMouseState{};
 	
 	int mnScreenWidth{0}, mnScreenHeight{0};
 	int mnMouseX{0}, mnMouseY{0};

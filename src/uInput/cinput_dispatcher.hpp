@@ -20,6 +20,9 @@ public:
 	
 	void key_pressed(Keys eKey);
 	void key_released(Keys eKey);
+	
+	void button_pressed(Buttons eButton);
+	void button_released(Buttons eButton);
 private:
 	std::vector<receiver*> mvReceivers;
 };

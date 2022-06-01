@@ -18,6 +18,16 @@ public:
 	{
 		printf("%s released\n", mpManager->key_to_string(eKey));
 	};
+	
+	void on_button_pressed(uinput::Buttons eButton) override
+	{
+		printf("%s pressed\n", mpManager->button_to_string(eButton));
+	};
+	
+	void on_button_released(uinput::Buttons eButton) override
+	{
+		printf("%s released\n", mpManager->button_to_string(eButton));
+	};
 private:
 	uinput::manager *mpManager{nullptr};
 };

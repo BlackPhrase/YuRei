@@ -31,4 +31,16 @@ void cinput_dispatcher::key_released(Keys eKey)
 		It->on_key_released(eKey);
 };
 
+void cinput_dispatcher::button_pressed(Buttons eButton)
+{
+	for(const auto &It : mvReceivers)
+		It->on_button_pressed(eButton);
+};
+
+void cinput_dispatcher::button_released(Buttons eButton)
+{
+	for(const auto &It : mvReceivers)
+		It->on_button_released(eButton);
+};
+
 }; // namespace uinput

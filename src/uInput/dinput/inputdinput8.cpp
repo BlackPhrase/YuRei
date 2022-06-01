@@ -127,6 +127,13 @@ std::unordered_map<uinput::Keys, int> cinputdinput8::mKeyMap =
 	{uinput::Keys::Num9, DIK_NUMPAD9}
 };
 
+std::unordered_map<uinput::Buttons, int> cinputdinput8::mButtonMap =
+{
+	{uinput::Buttons::Left, DIMOFS_BUTTON0},
+	{uinput::Buttons::Right, DIMOFS_BUTTON1},
+	{uinput::Buttons::Middle, DIMOFS_BUTTON2}
+};
+
 cinputdinput8::cinputdinput8(cinput_dispatcher *pDispatcher) : mpDispatcher(pDispatcher){}
 
 cinputdinput8::~cinputdinput8()
@@ -195,6 +202,11 @@ void cinputdinput8::frame()
 bool cinputdinput8::is_key_down(uinput::Keys eKey) const
 {
 	return mnKeyboardState[to_dinput_key(eKey)] & 0x80;
+};
+
+bool cinputdinput8::is_button_down(uinput::Buttons eButton) const
+{
+	return mMouseState.rgbButtons[to_dinput_button(eButton)] & 0x80;
 };
 
 void cinputdinput8::shutdown()
@@ -273,6 +285,20 @@ void cinputdinput8::process_input()
 	mnMouseY = mMouseState.lY;
 	
 	clamp_mouse_pos();
+	
+	for(int i = 0; i < 3; ++i)
+	{
+		auto nButton{DIMOFS_BUTTON0 + i};
+		
+		if(is_button_pressed(i))
+			mpDispatcher->button_pressed(to_internal_button(nButton));
+		
+		if(is_button_released(i))
+			mpDispatcher->button_released(to_internal_button(nButton));
+	};
+	
+	mOldMouseState = mMouseState;
+	//memcpy(&mOldMouseState, &mMouseState, sizeof(mMouseState));
 };
 
 void cinputdinput8::clamp_mouse_pos()
@@ -304,6 +330,20 @@ uinput::Keys cinputdinput8::to_internal_key(int nKey) const
 	return uinput::Keys::Invalid;
 };
 
+int cinputdinput8::to_dinput_button(uinput::Buttons eButton) const
+{
+	return mButtonMap[eButton];
+};
+
+uinput::Buttons cinputdinput8::to_internal_button(int nButton) const
+{
+	for(const auto &[button, value] : mButtonMap)
+		if(value == nButton)
+			return button;
+	
+	return uinput::Buttons::Invalid;
+};
+
 bool cinputdinput8::is_key_pressed(int nKey) const
 {
 	return (mnKeyboardState[nKey] & 0x80) && !(mnOldKeyboardState[nKey] & 0x80);
@@ -312,6 +352,16 @@ bool cinputdinput8::is_key_pressed(int nKey) const
 bool cinputdinput8::is_key_released(int nKey) const
 {
 	return !(mnKeyboardState[nKey] & 0x80) && (mnOldKeyboardState[nKey] & 0x80);
+};
+
+bool cinputdinput8::is_button_pressed(int nButton) const
+{
+	return (mMouseState.rgbButtons[nButton] & 0x80) && !(mOldMouseState.rgbButtons[nButton] & 0x80);
+};
+
+bool cinputdinput8::is_button_released(int nButton) const
+{
+	return !(mMouseState.rgbButtons[nButton] & 0x80) && (mOldMouseState.rgbButtons[nButton] & 0x80);
 };
 
 }; // namespace uinput

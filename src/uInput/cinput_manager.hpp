@@ -25,8 +25,12 @@ public:
 	
 	bool is_key_down(uinput::Keys eKey) const override;
 	const char *key_to_string(uinput::Keys eKey) const override;
+	
+	bool is_button_down(uinput::Buttons eButton) const override;
+	const char *button_to_string(uinput::Buttons eButton) const override;
 private:
 	static std::unordered_map<uinput::Keys, const char *> mKeyNameMap;
+	static std::unordered_map<uinput::Buttons, const char *> mButtonNameMap;
 	
 	std::unique_ptr<uinput::cinputdinput8> mpImpl;
 	

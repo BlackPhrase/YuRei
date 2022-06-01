@@ -127,6 +127,15 @@ enum class Keys : int
 	Num9
 };
 
+enum class Buttons : int // TODO: unsigned char?
+{
+	Invalid = -1,
+	
+	Left,
+	Right,
+	Middle
+};
+
 struct receiver;
 
 struct /*YUREI_MODULE_API*/ configuration
@@ -148,6 +157,12 @@ struct YUREI_MODULE_API manager
 	
 	virtual bool is_key_down(uinput::Keys eKey) const = 0;
 	virtual const char *key_to_string(uinput::Keys eKey) const = 0;
+	
+	///
+	virtual bool is_button_down(Buttons eButton) const = 0;
+	
+	///
+	virtual const char *button_to_string(Buttons eButton) const = 0;
 };
 
 YUREI_MODULE_API manager *create(configuration *pConfig);
