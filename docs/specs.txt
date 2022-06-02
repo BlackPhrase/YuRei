@@ -1,3 +1,16 @@
+2006
+
+* ODE for physics
+* Approximate global illumination with local occlusion
+* Deferred supersampling 64X AA
+* True Depth of Field
+* Soft shadows
+* Tonemapping with Eye Adaptation
+* Soft particles
+* Geometry Displacement Mapping
+
+2010+
+
 The major obstacles to the future of the S.T.A.L.K.E.R. engine were its inherent inability to be multi-threaded, the weak and error-prone networking model, and simply awful resource and memory management, which prohibited any kind of streaming or simply keeping the working set small enough for "next-gen" consoles.
 
 When 4A started as an independent studio this work became a foundation of the future engine. Because of the tight timescale we've opted to use a lot of middleware to get things going quickly. We've selected PhysX for physics, PathEngine for AI navigation, LUA as a primary development file format, not a scripting engine, for easy SVN merging, RakNet for physical network layer, FaceFX for facial animation, OGG Vorbis for sound format, and many other small things like compression libraries, etc.
