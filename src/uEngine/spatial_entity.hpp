@@ -1,10 +1,12 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class uobject;
 class renderable;
 class sound_receiver;
 
-class spatial_entity
+class YUREI_MODULE_API spatial_entity
 {
 public:
 	spatial_entity(class uspatial::dbase *);

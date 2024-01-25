@@ -1,6 +1,8 @@
 #pragma once
 
-class hemisphere
+#include <coretypes.hpp>
+
+class YUREI_MODULE_API hemisphere
 {
 public:
 	void build(int, float, void (*)(float, float, float, float, void *), void *);

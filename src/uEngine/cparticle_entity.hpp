@@ -1,9 +1,11 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class renderable;
 class str_shared;
 
-class cparticle_entity
+class YUREI_MODULE_API cparticle_entity
 {
 public:
 	cparticle_entity();

@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class scheduled_task;
 
-class ctaskscheduler
+class YUREI_MODULE_API ctaskscheduler
 {
 public:
 	struct item

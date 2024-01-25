@@ -1,6 +1,8 @@
 #pragma once
 
-class cperlin_noise1d
+#include <coretypes.hpp>
+
+class YUREI_MODULE_API cperlin_noise1d
 {
 public:
 	cperlin_noise1d(int);
@@ -14,7 +16,7 @@ public:
 	float get(float) const;
 };
 
-class cperlin_noise2d
+class YUREI_MODULE_API cperlin_noise2d
 {
 public:
 	cperlin_noise2d(int);
@@ -30,7 +32,7 @@ public:
 	void normalize(float * const);
 };
 
-class cperlin_noise3d
+class YUREI_MODULE_API cperlin_noise3d
 {
 public:
 	cperlin_noise3d(int);
@@ -46,7 +48,7 @@ public:
 	void normalize(float * const);
 };
 
-class cperlin_noise_custom
+class YUREI_MODULE_API cperlin_noise_custom
 {
 public:
 	cperlin_noise_custom(int);

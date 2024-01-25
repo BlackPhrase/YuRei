@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class str_shared;
 
-class scheduled_task
+class YUREI_MODULE_API scheduled_task
 {
 public:
 	scheduled_task();

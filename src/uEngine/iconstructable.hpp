@@ -1,6 +1,8 @@
 #pragma once
 
-class iconstructable
+#include <coretypes.hpp>
+
+class YUREI_MODULE_API iconstructable
 {
 public:
 	iconstructable();

@@ -2,9 +2,11 @@
 
 #include <memory>
 
+#include <coretypes.hpp>
+
 class cwindow;
 
-class capplication
+class YUREI_MODULE_API capplication
 {
 public:
 	capplication();
@@ -28,4 +30,4 @@ private:
 	std::unique_ptr<cwindow> mpWindow;
 };
 
-extern capplication *g_app;
+YUREI_MODULE_API extern capplication *g_app;

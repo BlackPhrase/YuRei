@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class uobject;
 
-class cform_shape
+class YUREI_MODULE_API cform_shape
 {
 public:
 	cform_shape(uobject *pObject);

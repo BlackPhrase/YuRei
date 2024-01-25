@@ -1,16 +1,20 @@
 #pragma once
 
+#include <memory>
+
 #include <coretypes.hpp>
 
 namespace urender
 {
+class manager;
 class backend;
 };
 
 YUREI_MODULE_API extern urender::manager *g_render;
 YUREI_MODULE_API extern urender::backend *g_backend;
 
-class cengine
+
+class YUREI_MODULE_API cengine
 {
 public:
 	cengine();
@@ -48,6 +52,7 @@ public:
 	void switch_to_edit_mode();
 private:
 	bool mbPaused{false};
+	bool mbActive{false};
 };
 
-extern cengine engine;
+YUREI_MODULE_API extern cengine engine;

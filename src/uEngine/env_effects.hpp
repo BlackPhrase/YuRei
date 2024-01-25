@@ -1,6 +1,8 @@
 #pragma once
 
-class cenv_effect_flares
+#include <coretypes.hpp>
+
+class YUREI_MODULE_API cenv_effect_flares
 {
 public:
 	cenv_effect_flares();
@@ -23,7 +25,7 @@ public:
 	void render(bool, bool, bool);
 };
 
-class cenv_effect_rain
+class YUREI_MODULE_API cenv_effect_rain
 {
 public:
 	struct item
@@ -64,7 +66,7 @@ public:
 	int p_size(particle *pParticle) const;
 };
 
-class cenv_effect_thunderbolt
+class YUREI_MODULE_API cenv_effect_thunderbolt
 {
 public:
 	cenv_effect_thunderbolt();

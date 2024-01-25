@@ -1,9 +1,11 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 struct sound;
 class str_shared;
 
-class cenv_ambient
+class YUREI_MODULE_API cenv_ambient
 {
 public:
 	struct seffect

@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class ccolor_animator_item;
 
-class ccolor_animator_library
+class YUREI_MODULE_API ccolor_animator_library
 {
 public:
 	ccolor_animator_library();

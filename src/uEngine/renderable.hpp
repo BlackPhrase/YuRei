@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class uobject;
 
-class renderable
+class YUREI_MODULE_API renderable
 {
 public:
 	renderable();

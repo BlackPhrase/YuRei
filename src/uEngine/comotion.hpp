@@ -1,10 +1,12 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class cenvelope;
 
 enum echannel_type : int;
 
-class comotion
+class YUREI_MODULE_API comotion
 {
 public:
 	comotion();

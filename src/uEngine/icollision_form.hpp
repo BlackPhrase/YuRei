@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class uobject;
 
-class icollision_form
+class YUREI_MODULE_API icollision_form
 {
 public:
 	icollision_form(uobject *pObject, enum ecollision_form_type aeType);

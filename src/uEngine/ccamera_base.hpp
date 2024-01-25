@@ -1,8 +1,12 @@
 #pragma once
 
+#include <coretypes.hpp>
+
+#include <vec3.hpp>
+
 class uobject;
 
-class ccamera_base
+class YUREI_MODULE_API ccamera_base
 {
 public:
 	ccamera_base(uobject *pObject, unsigned int);
@@ -22,7 +26,7 @@ public:
 	
 	void set(const struct _vec3<float> &, const struct _vec3<float> &, const struct _vec3<float> &);
 	void set(float x, float y, float z);
-	void get(struct _vec3<float> &, struct _vec3<float> &, struct _vec3<float> &s);
+	void get(struct _vec3<float> &, struct _vec3<float> &, struct _vec3<float> &);
 	
 	float check_lim_pitch();
 	float check_lim_yaw();
@@ -30,4 +34,11 @@ public:
 	
 	float get_world_pitch() const;
 	float get_world_yaw() const;
+private:
+	_vec3<float> mvPos{};
+	
+	uobject *mpParent{nullptr};
+	
+	float mfWorldPitch{0.0f};
+	float mfWorldYaw{0.0f};
 };

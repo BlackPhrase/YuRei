@@ -1,10 +1,12 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class str_shared;
 class cenv_ambient;
 class cenv_descriptor;
 
-class cenvironment
+class YUREI_MODULE_API cenvironment
 {
 public:
 	cenvironment();

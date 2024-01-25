@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class cenvironment;
 
-class cenv_descriptor
+class YUREI_MODULE_API cenv_descriptor
 {
 public:
 	cenv_descriptor();

@@ -1,15 +1,17 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 #include <windows.h>
 
 void WndMsgPump();
 
-class cwindow
+class YUREI_MODULE_API cwindow
 {
 public:
 	cwindow();
 	cwindow(const cwindow &other);
-	virtual ~cwindow();
+	virtual ~cwindow(); // TODO: virtual?
 	
 	cwindow &operator=(const cwindow &other);
 	

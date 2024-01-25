@@ -1,6 +1,13 @@
 #pragma once
 
-class ccustom_motion
+#include <coretypes.hpp>
+
+#include <gtl/intrusive_ptr.hpp>
+
+#include <vfs/ireader.hpp>
+#include <vfs/iwriter.hpp>
+
+class YUREI_MODULE_API ccustom_motion
 {
 public:
 	ccustom_motion();

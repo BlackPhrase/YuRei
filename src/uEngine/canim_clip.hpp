@@ -1,6 +1,13 @@
 #pragma once
 
-class canim_clip
+#include <coretypes.hpp>
+
+#include <gtl/intrusive_ptr.hpp>
+
+#include <vfs/iwriter.hpp>
+#include <vfs/ireader.hpp>
+
+class YUREI_MODULE_API canim_clip
 {
 public:
 	canim_clip();

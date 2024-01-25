@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class ccustom_motion;
 
-struct sanim_params
+struct YUREI_MODULE_API sanim_params
 {
 	sanim_params();
 	

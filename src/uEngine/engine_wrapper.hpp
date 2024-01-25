@@ -1,6 +1,8 @@
 #pragma once
 
-class engine_wrapper
+#include <coretypes.hpp>
+
+class YUREI_MODULE_API engine_wrapper
 {
 public:
 	engine_wrapper();
@@ -59,4 +61,4 @@ public:
 	//const engine_wrapper::`vftable'{for `uscript::engine'} // TODO
 };
 
-engine_wrapper &engine_wrapper_instance();
+YUREI_MODULE_API engine_wrapper &engine_wrapper_instance();

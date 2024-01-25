@@ -1,5 +1,7 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class str_shared;
 class renderable;
 
@@ -7,7 +9,7 @@ struct _matrix;
 
 class icollision_form;
 
-class uobject
+class YUREI_MODULE_API uobject
 {
 public:
 	uobject();

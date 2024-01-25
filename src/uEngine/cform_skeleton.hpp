@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class uobject;
 
-class cform_skeleton
+class YUREI_MODULE_API cform_skeleton
 {
 public:
 	cform_skeleton(uobject *pObject);

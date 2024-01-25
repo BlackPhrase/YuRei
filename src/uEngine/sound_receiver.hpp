@@ -1,6 +1,8 @@
 #pragma once
 
-class sound_receiver
+#include <coretypes.hpp>
+
+class YUREI_MODULE_API sound_receiver
 {
 public:
 	sound_receiver();

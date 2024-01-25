@@ -1,10 +1,12 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class cbone;
 class str_shared;
 struct st_bone_motion;
 
-class csmotion
+class YUREI_MODULE_API csmotion
 {
 public:
 	csmotion();

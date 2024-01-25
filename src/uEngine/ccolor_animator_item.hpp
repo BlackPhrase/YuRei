@@ -1,8 +1,15 @@
 #pragma once
 
+#include <coretypes.hpp>
+
+#include <gtl/intrusive_ptr.hpp>
+
+#include <vfs/ireader.hpp>
+#include <vfs/iwriter.hpp>
+
 class str_shared;
 
-class ccolor_animator_item
+class YUREI_MODULE_API ccolor_animator_item
 {
 public:
 	ccolor_animator_item();
@@ -18,7 +25,7 @@ public:
 	void save(class gtl::intrusive_ptr<class vfs::iwriter, struct gtl::intrusive_base, class gtl::intrusive_default_functionality>);
 	void load(class gtl::intrusive_ptr<class vfs::ireader, struct gtl::intrusive_base, class gtl::intrusive_default_functionality>);
 	
-	void insert_key(int unsigned int);
+	void insert_key(int, unsigned int);
 	void move_key(int, int);
 	void delete_key(int nKey);
 	

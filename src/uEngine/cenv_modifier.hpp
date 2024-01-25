@@ -1,6 +1,8 @@
 #pragma once
 
-class cenv_modifier
+#include <coretypes.hpp>
+
+class YUREI_MODULE_API cenv_modifier
 {
 public:
 	cenv_modifier &operator=(const cenv_modifier &other);

@@ -1,9 +1,11 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class uobject;
 class icollision_form;
 
-class ccollision_space
+class YUREI_MODULE_API ccollision_space
 {
 public:
 	ccollision_space();

@@ -1,6 +1,8 @@
 #pragma once
 
-class engine_camera
+#include <coretypes.hpp>
+
+class YUREI_MODULE_API engine_camera
 {
 public:
 	engine_camera();

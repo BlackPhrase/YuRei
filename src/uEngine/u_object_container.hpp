@@ -1,9 +1,11 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class uobject;
 class str_shared;
 
-class u_object_container
+class YUREI_MODULE_API u_object_container
 {
 public:
 	u_object_container();

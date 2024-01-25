@@ -1,6 +1,20 @@
 #pragma once
 
-class event_dispatcher
+#include <coretypes.hpp>
+
+namespace fastdelegate
+{
+
+template <typename T>
+class FastDelegate0
+{
+};
+
+//extern template class FastDelegate0<void>;
+
+};
+
+class YUREI_MODULE_API event_dispatcher
 {
 public:
 	event_dispatcher();
@@ -15,4 +29,6 @@ public:
 	void remove(const fastdelegate::FastDelegate0<void> &event);
 	
 	void dispatch();
+private:
+	
 };

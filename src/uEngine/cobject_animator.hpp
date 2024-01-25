@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class comotion;
 
-class cobject_animator
+class YUREI_MODULE_API cobject_animator
 {
 public:
 	cobject_animator();

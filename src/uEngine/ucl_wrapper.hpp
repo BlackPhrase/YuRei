@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class ufrustum;
 
-class ucl_wrapper
+class YUREI_MODULE_API ucl_wrapper
 {
 public:
 	ucl_wrapper();
@@ -26,4 +28,4 @@ public:
 	int r_count() const;
 };
 
-extern ucl_wrapper ucollider;
+YUREI_MODULE_API extern ucl_wrapper ucollider;

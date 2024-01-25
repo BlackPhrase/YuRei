@@ -1,6 +1,8 @@
 #pragma once
 
-class cenvelope
+#include <coretypes.hpp>
+
+class YUREI_MODULE_API cenvelope
 {
 public:
 	cenvelope();

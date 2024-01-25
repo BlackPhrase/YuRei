@@ -1,8 +1,10 @@
 #pragma once
 
+#include <coretypes.hpp>
+
 class uobject;
 
-class object_follow_animation
+class YUREI_MODULE_API object_follow_animation
 {
 public:
 	object_follow_animation(uobject *pObject);
