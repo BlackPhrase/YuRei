@@ -138,7 +138,7 @@ enum class Buttons : int // TODO: unsigned char?
 
 struct receiver;
 
-struct /*YUREI_MODULE_API*/ configuration
+struct configuration
 {
 	void *pWindow{nullptr};
 	
@@ -146,7 +146,7 @@ struct /*YUREI_MODULE_API*/ configuration
 	int nScreenHeight{0};
 };
 
-struct YUREI_MODULE_API manager
+struct /*YUREI_MODULE_API*/ manager
 {
 	virtual ~manager() = default;
 	

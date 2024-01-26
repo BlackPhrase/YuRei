@@ -10,7 +10,7 @@ struct configuration
 	// TODO
 };
 
-struct YUREI_MODULE_API manager
+struct /*YUREI_MODULE_API*/ manager
 {
 	//isoundlistener *get_listener() const;
 	

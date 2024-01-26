@@ -5,7 +5,7 @@
 namespace urender
 {
 
-class YUREI_MODULE_API manager
+class /*YUREI_MODULE_API*/ manager
 {
 public:
 	manager() = default;
@@ -13,14 +13,14 @@ public:
 	virtual void init(void *pWindow);
 };
 
-class YUREI_MODULE_API backend
+class /*YUREI_MODULE_API*/ backend
 {
 public:
 	virtual void begin_frame();
 	virtual void end_frame();
 };
 
-class YUREI_MODULE_API draw_utils
+class /*YUREI_MODULE_API*/ draw_utils
 {
 public:
 	draw_utils() = default;
