@@ -1,3 +1,7 @@
+#pragma once
+
+#include <coretypes.hpp>
+
 namespace skeleton
 {
 
@@ -11,7 +15,7 @@ struct manager
 	// TODO
 };
 
-manager *create(configuration *pConfig);
-void destroy();
+YUREI_MODULE_API manager *create(configuration *pConfig);
+YUREI_MODULE_API void destroy();
 
 };
