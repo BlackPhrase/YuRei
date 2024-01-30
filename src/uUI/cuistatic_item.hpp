@@ -1,6 +1,10 @@
 #pragma once
 
-class cuistatic_item
+#include <uCore/coretypes.hpp>
+
+#include <uMath/vec2.hpp>
+
+class YUREI_MODULE_API cuistatic_item
 {
 public:
 	cuistatic_item();

@@ -1,6 +1,8 @@
 #pragma once
 
-struct cfont_manager
+#include <uCore/coretypes.hpp>
+
+struct YUREI_MODULE_API cfont_manager
 {
 public:
 	cfont_manager();

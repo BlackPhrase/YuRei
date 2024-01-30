@@ -1,8 +1,12 @@
 #pragma once
 
+#include <uCore/coretypes.hpp>
+
+#include <uMath/vec2.hpp>
+
 class str_shared;
 
-class cuiwindow
+class YUREI_MODULE_API cuiwindow
 {
 public:
 	cuiwindow();
@@ -49,7 +53,7 @@ public:
 	void on_notify_parent(cuiwindow *pParent, short, void *);
 	
 	bool is_focused() const;
-	bool is_child(cuiwindow *parent) const;
+	bool is_child(cuiwindow *parent) const; // TODO: is child of parent or is the specified window is a child of me?
 	bool is_auto_delete() const;
 	
 	int get_child_num() const;

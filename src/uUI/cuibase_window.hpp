@@ -1,10 +1,15 @@
 #pragma once
 
-class cuibase_window
+#include <uCore/coretypes.hpp>
+
+#include <uMath/vec2.hpp>
+
+class YUREI_MODULE_API cuibase_window
 {
 public:
 	cuibase_window();
 	cuibase_window(const cuibase_window &other);
+	// TODO: no destructor?
 	
 	// TODO: vtable
 	
@@ -19,11 +24,10 @@ public:
 	void set_wnd_size(const struct _vec2<float> &);
 	
 	void on_frame();
-	
 	void on_paint();
 	
 	bool is_shown() const;
 	
-	struct _vec2<float> get_end_size() const;
+	struct _vec2<float> get_wnd_size() const; // TODO: no reference?
 	const class _aabb2<float> &get_wnd_rect() const;
 };
