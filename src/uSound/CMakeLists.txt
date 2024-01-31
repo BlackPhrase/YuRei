@@ -5,6 +5,10 @@ find_package(OpenAL)
 
 add_library(${PROJECT_NAME} SHARED)
 
+target_compile_definitions(${PROJECT_NAME}
+	PRIVATE YRAY_MODULE_EXPORTS
+)
+
 target_include_directories(${PROJECT_NAME}
 	PRIVATE ${OPENAL_INCLUDE_DIR}
 )
